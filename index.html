@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hobb® — Building the world's largest family-safe entertainment system</title>
+<meta name="description" content="hobb is building the world's largest family-safe entertainment system across music, TV and film. Powered by global talent, borderless in spirit." />
+<meta property="og:title" content="hobb®" />
+<meta property="og:description" content="Building the world's largest family-safe entertainment system. Music · TV · Film." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #c8102e; /* hobb red */
+    --font-display: 'Jost', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+  main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* header */
+  header {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 2rem 1.5rem 0;
+  }
+  @media (min-width: 768px) { header { padding: 2rem 3rem 0; } }
+  .stack { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: 10px; text-transform: uppercase; letter-spacing: .22em;
+    color: rgba(200,16,46,.7);
+  }
+  @media (min-width: 768px) { .eyebrow { font-size: 12px; } }
+  .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--fg); animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .submit-link {
+    align-self: flex-start;
+    font-size: 10px; text-transform: uppercase; letter-spacing: .22em;
+    color: rgba(200,16,46,.7);
+    border-bottom: 1px solid rgba(200,16,46,.3);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  @media (min-width: 768px) { .submit-link { font-size: 12px; } }
+  .submit-link:hover { color: var(--fg); border-color: var(--fg); }
+  .email {
+    font-size: 11px; letter-spacing: .04em;
+    border-bottom: 1px solid rgba(200,16,46,.4);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  @media (min-width: 768px) { .email { font-size: 14px; } }
+  .email:hover { border-color: var(--fg); }
+
+  /* hero */
+  section.hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1.5rem; text-align: center;
+  }
+  .pills {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .3em;
+    color: rgba(200,16,46,.7); margin-bottom: 1rem;
+  }
+  @media (min-width: 768px) { .pills { font-size: 12px; } }
+  .pills .sep { margin: 0 .5rem; opacity: .5; }
+
+  h1 {
+    margin: 0; line-height: 1;
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: clamp(3rem, 11vw, 9.5rem);
+    letter-spacing: -0.02em;
+  }
+  h1 sup {
+    font-size: .22em; vertical-align: super; font-weight: 300; margin-left: .25rem;
+  }
+
+  .tagline {
+    margin: 1.25rem 0 0;
+    max-width: 40rem;
+    font-size: 12px; text-transform: uppercase; letter-spacing: .32em; font-weight: 300;
+  }
+  @media (min-width: 768px) { .tagline { font-size: 14px; margin-top: 1.5rem; } }
+  @media (min-width: 1024px) { .tagline { font-size: 16px; } }
+
+  .play {
+    margin-top: 1.75rem;
+    display: inline-flex; align-items: center; gap: .75rem;
+    color: rgba(200,16,46,.7);
+    transition: color .2s;
+  }
+  @media (min-width: 768px) { .play { margin-top: 2rem; } }
+  .play:hover { color: var(--fg); }
+  .play .ring {
+    position: relative;
+    width: 48px; height: 48px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(200,16,46,.4);
+    transition: border-color .2s;
+  }
+  @media (min-width: 768px) { .play .ring { width: 56px; height: 56px; } }
+  .play:hover .ring { border-color: var(--fg); }
+  .play .ring::before {
+    content: ''; position: absolute; inset: 0; border-radius: 999px;
+    border: 1px solid rgba(200,16,46,.3);
+    animation: ping 2s cubic-bezier(0,0,.2,1) infinite;
+  }
+  @keyframes ping {
+    75%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  .play svg { width: 16px; height: 16px; fill: currentColor; transform: translateX(1px); }
+  @media (min-width: 768px) { .play svg { width: 20px; height: 20px; } }
+  .play .label { font-size: 10px; text-transform: uppercase; letter-spacing: .3em; }
+  @media (min-width: 768px) { .play .label { font-size: 12px; } }
+
+  /* footer */
+  footer {
+    display: flex; flex-direction: column; gap: .75rem;
+    align-items: center; justify-content: space-between;
+    padding: 2rem 1.5rem 1.5rem;
+    font-size: 10px; text-transform: uppercase; letter-spacing: .22em;
+    color: rgba(200,16,46,.55);
+    text-align: center;
+  }
+  @media (min-width: 640px) { footer { flex-direction: row; padding: 2rem 3rem 1.5rem; } }
+  footer .sep { margin: 0 .5rem; opacity: .6; }
+
+  /* modals */
+  .modal {
+    position: fixed; inset: 0; z-index: 50;
+    display: none; align-items: center; justify-content: center;
+    padding: 1rem;
+    animation: fadeIn .2s ease-out;
+  }
+  .modal.open { display: flex; }
+  .modal.video { background: rgba(0,0,0,.85); backdrop-filter: blur(4px); }
+  .modal.submit { background: rgba(200,16,46,.3); backdrop-filter: blur(4px); align-items: flex-start; overflow-y: auto; }
+  @media (min-width: 768px) { .modal.submit { align-items: center; } }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .modal .close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    width: 40px; height: 40px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,.3);
+    color: rgba(255,255,255,.8);
+    transition: color .2s, border-color .2s;
+  }
+  .modal .close:hover { color: #fff; border-color: #fff; }
+  .modal.submit .close {
+    color: rgba(200,16,46,.6);
+    border-color: rgba(200,16,46,.2);
+  }
+  .modal.submit .close:hover { color: var(--fg); border-color: var(--fg); }
+
+  .video-frame {
+    position: relative; width: 100%; max-width: 64rem;
+    aspect-ratio: 16/9; box-shadow: 0 25px 50px -12px rgba(0,0,0,.5);
+  }
+  .video-frame iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 6px;
+  }
+
+  .submit-card {
+    position: relative; width: 100%; max-width: 36rem;
+    background: #fff; border-radius: 6px;
+    padding: 1.75rem; margin: 2rem 0;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+  }
+  @media (min-width: 768px) { .submit-card { padding: 2.5rem; } }
+  .submit-card .kicker {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .3em;
+    color: rgba(200,16,46,.6); margin-bottom: .75rem;
+  }
+  .submit-card h2 {
+    margin: 0 0 .5rem; font-family: var(--font-display); font-weight: 300;
+    font-size: 1.875rem; line-height: 1;
+  }
+  @media (min-width: 768px) { .submit-card h2 { font-size: 2.25rem; } }
+  .submit-card .lead {
+    margin: 0 0 1.75rem; font-size: 12px; color: rgba(200,16,46,.6);
+  }
+  @media (min-width: 768px) { .submit-card .lead { font-size: 14px; } }
+
+  form .field { display: block; margin-bottom: 1.25rem; }
+  form .field > span {
+    display: block;
+    font-size: 10px; text-transform: uppercase; letter-spacing: .28em;
+    color: rgba(200,16,46,.6); margin-bottom: .5rem;
+  }
+  .input {
+    width: 100%; background: transparent; color: var(--fg);
+    border: 0; border-bottom: 1px solid rgba(200,16,46,.3);
+    padding: .5rem 0; font: inherit; outline: none;
+  }
+  select.input { appearance: none; padding-right: 2rem; cursor: pointer; }
+  textarea.input { resize: none; }
+  .input::placeholder { color: rgba(200,16,46,.35); }
+  .input:focus { border-color: var(--fg); }
+  .submit-btn {
+    width: 100%; margin-top: .5rem; padding: .75rem;
+    font-size: 12px; text-transform: uppercase; letter-spacing: .3em;
+    background: var(--fg); color: #fff;
+    transition: opacity .2s;
+  }
+  .submit-btn:hover { opacity: .9; }
+
+  .thanks { padding: 2.5rem 0; text-align: center; }
+  .thanks h3 {
+    margin: 0 0 .75rem; font-family: var(--font-display); font-weight: 300;
+    font-size: 1.875rem;
+  }
+  .thanks p { margin: 0 auto; max-width: 22rem; font-size: 14px; color: rgba(200,16,46,.7); }
+  .thanks .close-text {
+    margin-top: 2rem; font-size: 10px; text-transform: uppercase; letter-spacing: .3em;
+    border-bottom: 1px solid rgba(200,16,46,.3); padding-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="stack">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Coming soon</div>
+      <button type="button" class="submit-link" onclick="openSubmit()">Submit your recordings →</button>
+    </div>
+    <a class="email" href="mailto:hello@hobb.studio">hello@hobb.studio</a>
+  </header>
+
+  <section class="hero">
+    <div class="pills">MUSIC<span class="sep">·</span>TV<span class="sep">·</span>FILM</div>
+    <h1>hobb<sup>®</sup></h1>
+    <p class="tagline">Building the world's largest family-safe entertainment system</p>
+    <button type="button" class="play" onclick="openVideo()" aria-label="Play teaser">
+      <span class="ring">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+      <span class="label">Play</span>
+    </button>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> hobb®</span>
+    <span>Los Angeles<span class="sep">·</span>Dubai<span class="sep">·</span>London<span class="sep">·</span>Pakistan</span>
+    <span>Global Talent · Borderless in Spirit</span>
+  </footer>
+</main>
+
+<!-- video modal -->
+<div class="modal video" id="videoModal" onclick="closeVideo()">
+  <button type="button" class="close" onclick="closeVideo()" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+  </button>
+  <div class="video-frame" onclick="event.stopPropagation()">
+    <iframe id="ytFrame" title="hobb" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- submit modal -->
+<div class="modal submit" id="submitModal" onclick="closeSubmit()">
+  <div class="submit-card" onclick="event.stopPropagation()">
+    <button type="button" class="close" onclick="closeSubmit()" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+    <div id="submitForm">
+      <div class="kicker">Submit</div>
+      <h2>Send us your work</h2>
+      <p class="lead">Scripts, films, trailers, music — we review every submission.</p>
+      <form onsubmit="handleSubmit(event)">
+        <label class="field"><span>Name</span><input class="input" name="name" required maxlength="100" /></label>
+        <label class="field"><span>Email</span><input class="input" type="email" name="email" required maxlength="255" /></label>
+        <label class="field"><span>Type</span>
+          <select class="input" name="type">
+            <option>Script</option><option>Short Film</option><option>Feature Film</option>
+            <option>Trailer</option><option>TV Pilot / Series</option><option>Music / Soundtrack</option>
+            <option>Documentary</option><option>Animation</option><option>Pitch Deck</option><option>Other</option>
+          </select>
+        </label>
+        <label class="field"><span>Title</span><input class="input" name="title" maxlength="150" /></label>
+        <label class="field"><span>Link (Vimeo, Drive, etc.)</span><input class="input" type="url" name="link" placeholder="https://" maxlength="500" /></label>
+        <label class="field"><span>A note (optional)</span><textarea class="input" name="message" rows="3" maxlength="1000"></textarea></label>
+        <button type="submit" class="submit-btn">Send submission</button>
+      </form>
+    </div>
+    <div id="submitThanks" class="thanks" style="display:none">
+      <div class="kicker">Thank you</div>
+      <h3>Your email is opening</h3>
+      <p>Send it through and we'll be in touch. Excited to hear what you've made.</p>
+      <button type="button" class="close-text" onclick="closeSubmit()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function openVideo() {
+    document.getElementById('ytFrame').src = 'https://www.youtube.com/embed/Q3TI27IN7X0?autoplay=1&rel=0';
+    document.getElementById('videoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    document.getElementById('videoModal').classList.remove('open');
+    document.getElementById('ytFrame').src = '';
+    document.body.style.overflow = '';
+  }
+  function openSubmit() {
+    document.getElementById('submitForm').style.display = '';
+    document.getElementById('submitThanks').style.display = 'none';
+    document.getElementById('submitModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSubmit() {
+    document.getElementById('submitModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const f = e.target;
+    const d = Object.fromEntries(new FormData(f).entries());
+    const subject = `Submission — ${d.type}: ${d.title || 'Untitled'}`;
+    const body = [
+      `Name: ${d.name}`, `Email: ${d.email}`, `Type: ${d.type}`,
+      `Title: ${d.title}`, `Link: ${d.link}`, '', d.message
+    ].join('\n');
+    window.location.href = `mailto:hello@hobb.studio?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    document.getElementById('submitForm').style.display = 'none';
+    document.getElementById('submitThanks').style.display = '';
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeVideo(); closeSubmit(); }
+  });
+</script>
+</body>
+</html>
